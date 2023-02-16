@@ -1,5 +1,5 @@
 def packageChart(String chart, String package_path) {
-    sh ("cr package ${chart} --package-path ${package_path}")
+    sh ("./cr package ${chart} --package-path ${package_path}")
 }
 
 // Get the commit hash 
@@ -28,6 +28,19 @@ pipeline {
 
    stages {
 
+        stage("Configure Chart Releaser") {
+            steps {
+                script {
+                    echo "Installing Chart Releaser"
+                    sh ('''
+                        curl -sSLo cr.tar.gz "https://github.com/helm/chart-releaser/releases/download/v1.5.0/chart-releaser_1.5.0_linux_amd64.tar.gz"
+                        tar -xzf cr.tar.gz -C $(pwd)
+                        rm cr.tar.gz
+                    ''')
+                }
+            }
+        }
+
         stage('Package Charts'){
             steps {
                 script {
@@ -41,11 +54,11 @@ pipeline {
         stage('Release Chart') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "CR_OWNER", passwordVariable: "CR_TOKEN")]) {
+                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "GIT_OWNER", passwordVariable: "CR_TOKEN")]) {
                         echo "Releasing API CHARTS"
                         CR_COMMIT=gitRevision()
                         sh ('''
-                            cr upload --skip-existing
+                            ./cr upload --skip-existing
                         ''')
                     }
                 }
@@ -55,10 +68,10 @@ pipeline {
         stage('Update Index') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "CR_OWNER", passwordVariable: "CR_TOKEN")]) {
+                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "GIT_OWNER", passwordVariable: "CR_TOKEN")]) {
                         echo "Updating Index for Chart"
                         sh('''
-                        cr index
+                        ./cr index
                         ''')
                     }
                 }
@@ -67,10 +80,10 @@ pipeline {
         stage('Push Index To Github') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "CR_OWNER", passwordVariable: "CR_TOKEN")]) {
+                    withCredentials([usernamePassword(credentialsId: 'Jenkinsprivateac', usernameVariable: "GIT_OWNER", passwordVariable: "CR_TOKEN")]) {
                         echo "Updating Index for Chart"
                         sh('''
-                        cr index --push
+                        ./cr index --push
                         ''')
                     }
                 }
