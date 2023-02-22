@@ -1,0 +1,38 @@
+{{- $root := . -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include  "configmap.fullname" . }}
+  labels:
+    {{- include "msd-fastapi.labels" . | nindent 4 }}
+  {{- with .Values.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+data:
+  sdao.ini: |
+  {{- range $elem, $elemVal := index .Values "sdao.ini" }}
+    {{- if not (kindIs "map" $elemVal) }}
+    {{- if kindIs "invalid" $elemVal }}
+    {{ $elem }} =
+    {{- else if kindIs "string" $elemVal }}
+    {{ $elem }} = {{ tpl $elemVal $ }}
+    {{- else }}
+    {{ $elem }} = {{ $elemVal }}
+    {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- range $key, $value := index .Values "sdao.ini" }}
+    {{- if kindIs "map" $value }}
+    [{{ $key }}]
+    {{- range $elem, $elemVal := $value }}
+    {{- if kindIs "invalid" $elemVal }}
+    {{ $elem }} =
+    {{- else if kindIs "string" $elemVal }}
+    {{ $elem }} = {{ tpl $elemVal $ }}
+    {{- else }}
+    {{ $elem }} = {{ $elemVal }}
+    {{- end }}
+    {{- end }}
+    {{- end }}
+  {{- end }}

@@ -1,0 +1,115 @@
+# Default values for msd-fastapi.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podDisruptionBudget: {}
+
+deploymentStrategy:
+  type: RollingUpdate
+
+readinessProbe: {}
+  # httpGet:
+  #   path: /api/health
+  #   port: 8080
+
+livenessProbe: {}
+  # httpGet:
+  #   path: /api/health
+  #   port: 8080
+  # initialDelaySeconds: 60
+  # timeoutSeconds: 30
+  # failureThreshold: 10
+
+
+env: {}
+
+
+configuration: 
+  ssh:
+    keyMountPath: /dev
+    secretName: default
+    secretPath: default
+    secretData: ssh_key
+  snowflake:
+    keyMountPath: /dev/snowflake
+    secretName: default
+    secretPath: default
+    key: ssh_key
+
+configMap:
+  name: msd-fastapi-secret
+  
+sdao.ini:
+  DEFAULT:
+    Compression: no
+
+command:
+  - /bin/sh
+  - -c
+  - . /app/start.sh

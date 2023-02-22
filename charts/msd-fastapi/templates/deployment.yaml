@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "msd-fastapi.fullname" . }}
+  labels:
+    {{- include "msd-fastapi.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "msd-fastapi.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "msd-fastapi.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "msd-fastapi.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.command }}
+          command:
+          {{- range .Values.command }}
+            - {{ . | quote }}
+          {{- end }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: {{ .Values.configuration.snowflake.keyMountPath }}
+              name: snowflake-privatekey
+              subPath: {{ include "secret.snowflake.key_name" . }}
+            - mountPath: {{ .Values.configuration.ssh.keyMountPath }}
+              name: ssh-key
+              subPath: id_rsa
+            - mountPath: /dev/secrets
+              name: msd-ini
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: msd-ini
+          configMap:
+            name: {{ include "configmap.fullname" . }}
+            items:
+              - key: sdao.ini
+                path: sdao.ini
+        - name: ssh-key
+          secret:
+            secretName: {{ include "secret.ssh_key.fullname" . }}
+            items:
+              - key: {{ include "secret.ssh_key.key_name" . }}
+                path: id_rsa
+        - name: snowflake-privatekey
+          secret:
+            secretName: {{ include "secret.snowflake_privatekey.fullname" . }}
