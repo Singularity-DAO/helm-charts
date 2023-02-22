@@ -31,4 +31,15 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/launchpad-services-api-0.1.0/launchpad-services-api-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-16T13:50:17.176472249Z"
+  msd-fastapi:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-02-22T07:22:14.530788602Z"
+    description: A Helm chart for Kubernetes
+    digest: 8b6d993c6c66e6c9ff5adb15780cc25a5575ee1c9bef56a61519f36cc43aa5dd
+    name: msd-fastapi
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-02-22T07:22:14.530798734Z"
