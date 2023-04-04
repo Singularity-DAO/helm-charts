@@ -3,6 +3,16 @@ entries:
   launchpad-services-api:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-04-04T09:30:27.341139883Z"
+    description: A Helm chart for Kubernetes
+    digest: 51b0be3b7fc208a6fcf1e36216c79dc1f7942999360f8e75a91bf5eec14a669a
+    name: launchpad-services-api
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/launchpad-services-api-0.1.3/launchpad-services-api-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-02-16T13:50:17.176464583Z"
     description: A Helm chart for Kubernetes
     digest: d936787909117f43a3fafdc7786a6c4126f66a357ce2a64c1b9a3ea95fadf63a
@@ -42,4 +52,4 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-22T07:22:14.530798734Z"
+generated: "2023-04-04T09:30:27.549276364Z"
