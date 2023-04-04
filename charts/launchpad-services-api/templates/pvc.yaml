@@ -6,7 +6,7 @@ metadata:
     {{- include "api.labels" . | nindent 4 }}
 spec:
   accessModes:
-    {{- range .Values.persistent.accessMode  }}
+    {{- range .Values.persistent.accessModes }}
     - {{ . | quote }}
     {{- end }}
   resources:

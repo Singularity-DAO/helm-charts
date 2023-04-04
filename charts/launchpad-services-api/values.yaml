@@ -70,7 +70,7 @@ persistent:
   accessModes:
     - ReadWriteOnce
   size: 10Gi
-  # Uncomment and provide storageClassName key below to specify the storageclass with which volume needs to be created.
+  
   # storageClassName: ""
   
   # selectorLabels: {}

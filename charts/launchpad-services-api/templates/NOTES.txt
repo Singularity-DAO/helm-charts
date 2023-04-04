@@ -1,6 +1,1 @@
 1. Application launchpad-services-api is successfully deployed
-
-
-
-Current issue is that .serverless directory that contain the state for the function is deleted everytime the build is successful. So when pipeline is trying to delete the old lambda (using npc serverless remove), due to unavailability of old state, it removes nothing. Then npc serverless deploy the new version of lambda. This is accumulating the high number of lambda and role.
-
