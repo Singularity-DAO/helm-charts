@@ -1,0 +1,1 @@
+1. Application dynaset-services is successfully deployed
