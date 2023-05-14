@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: dynaset-services
+  repository: launchpad-services-api
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -74,12 +74,3 @@ persistent:
   # storageClassName: ""
   
   # selectorLabels: {}
-
-secret:
-  name: secetname
-  dataFrom:
-    key: secretname
-  refreshInterval: 5m
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: secretstore

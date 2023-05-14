@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "api.fullname" . }}-logs
+  labels:
+    {{- include "api.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- range .Values.persistent.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistent.size }}
+  {{- with .Values.persistent.storageClassName }}
+  storageClassName: {{ . }}
+  {{- end }}
+  {{- with .Values.persistent.selectorLabels }}
+  selector:
+    matchLabels:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+    
