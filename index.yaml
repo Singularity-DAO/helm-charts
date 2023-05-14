@@ -3,6 +3,16 @@ entries:
   dynaset-services:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-05-14T14:05:16.86995156Z"
+    description: A Helm chart for Kubernetes
+    digest: 8c1783b666ee19b3a6340eb737bf301d634c32463f4517dc8873f7dcdeb140ee
+    name: dynaset-services
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/dynaset-services-0.1.1/dynaset-services-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-04-23T10:40:27.983548671Z"
     description: A Helm chart for Kubernetes
     digest: 659b1adca9ff6b397da538d1cc93be1f9923b52177342a039642fa980e41e78e
@@ -83,4 +93,4 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-23T10:40:28.366145681Z"
+generated: "2023-05-14T14:05:17.246389806Z"
