@@ -38,10 +38,13 @@ spec:
           command:
             - /bin/sh
             - '-c'
-            - 'node dist/src/main.js | tee -a /logs/launchpad.log'
+            - 'node dist/src/main.js | tee -a /logs/execution.log'
           volumeMounts:
             - name: logs
               mountPath: /logs
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secret.name }}
           env:
             - name: API_ENVIRONMENT
               valueFrom:

@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: launchpad-services-api
+  repository: execution-services
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -74,3 +74,12 @@ persistent:
   # storageClassName: ""
   
   # selectorLabels: {}
+
+secret:
+  name: secetname
+  dataFrom:
+    key: secretname
+  refreshInterval: 5m
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: secretstore

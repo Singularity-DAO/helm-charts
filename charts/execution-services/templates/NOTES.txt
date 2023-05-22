@@ -1,1 +1,1 @@
-1. Application launchpad-services-api is successfully deployed
+1. Application execution-services is successfully deployed

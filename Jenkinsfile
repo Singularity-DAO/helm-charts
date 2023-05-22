@@ -50,6 +50,7 @@ pipeline {
                     packageChart("${CHARTS_DIR}/launchpad-services-api", "${RELEASE_PACKAGE_DIR}")
                     packageChart("${CHARTS_DIR}/msd-fastapi", "${RELEASE_PACKAGE_DIR}")
                     packageChart("${CHARTS_DIR}/dynaset-services", "${RELEASE_PACKAGE_DIR}")
+                    packageChart("${CHARTS_DIR}/execution-services", "${RELEASE_PACKAGE_DIR}")
                 }
             }
         }
