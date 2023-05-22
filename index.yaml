@@ -21,6 +21,17 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/dynaset-services-0.1.0/dynaset-services-0.1.0.tgz
     version: 0.1.0
+  execution-services:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-05-22T08:49:24.24452226Z"
+    description: A Helm chart for Kubernetes
+    digest: b3e219eb1c985ea09a10af20b3e42219d58a3ef6985209b4fa634fbcdb466507
+    name: execution-services
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/execution-services-0.1.0/execution-services-0.1.0.tgz
+    version: 0.1.0
   launchpad-services-api:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -93,4 +104,4 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-14T14:05:17.246389806Z"
+generated: "2023-05-22T08:49:24.644482742Z"
