@@ -3,6 +3,16 @@ entries:
   automated-execution-server:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-07T11:40:13.763795729Z"
+    description: A Helm chart for Kubernetes
+    digest: 9092e330717d715513706ffa83f79196ad0d09acb005ee9cc82a9a30ec44e0c5
+    name: automated-execution-server
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/automated-execution-server-0.1.1/automated-execution-server-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-06-06T05:59:17.472896138Z"
     description: A Helm chart for Kubernetes
     digest: cdb963bbc85fcd80b4999ef9a8ea3d6fceb1ba688d18dc254481a451ff5b5dbe
@@ -33,6 +43,16 @@ entries:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/dynaset-services-0.1.0/dynaset-services-0.1.0.tgz
     version: 0.1.0
   execution-services:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-07T11:40:14.164201781Z"
+    description: A Helm chart for Kubernetes
+    digest: cc790e5875b75bf662be2f89fff15264c9e0c3e379219dcdec6640477c3dfaf1
+    name: execution-services
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/execution-services-0.1.1/execution-services-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-05-22T08:49:24.24452226Z"
@@ -115,4 +135,4 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-06T05:59:18.226535865Z"
+generated: "2023-06-07T11:40:14.542525478Z"
