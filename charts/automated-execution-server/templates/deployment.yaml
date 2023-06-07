@@ -38,7 +38,7 @@ spec:
           command:
             - /bin/sh
             - '-c'
-            - 'node dist/src/main.js | tee -a /logs/automated-execution-server.log'
+            - 'node dist/main.js | tee -a /logs/automated-execution-server.log'
           volumeMounts:
             - name: logs
               mountPath: /logs
