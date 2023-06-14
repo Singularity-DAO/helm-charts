@@ -38,7 +38,7 @@ spec:
           command:
             - /bin/sh
             - '-c'
-            - 'node dist/main.js | tee -a /logs/automated-execution-server.log'
+            - 'yarn start:prod | tee -a /logs/automated-execution-server.log'
           volumeMounts:
             - name: logs
               mountPath: /logs
