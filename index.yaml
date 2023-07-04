@@ -52,6 +52,17 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/dynaset-services-0.1.0/dynaset-services-0.1.0.tgz
     version: 0.1.0
+  dynavaults-backend:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-07-04T08:12:02.721866162Z"
+    description: A Helm chart for Kubernetes
+    digest: e70f4859c2cdb893cbfba26f1a45986f4108e300825f3002b7d5d8f7b80dbfa7
+    name: dynavaults-backend
+    type: application
+    urls:
+    - https://github.com/Singularity-DAO/helm-charts/releases/download/dynavaults-backend-0.1.0/dynavaults-backend-0.1.0.tgz
+    version: 0.1.0
   execution-services:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -155,4 +166,4 @@ entries:
     urls:
     - https://github.com/Singularity-DAO/helm-charts/releases/download/msd-fastapi-0.1.0/msd-fastapi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-14T10:15:32.519103842Z"
+generated: "2023-07-04T08:12:03.400414391Z"
