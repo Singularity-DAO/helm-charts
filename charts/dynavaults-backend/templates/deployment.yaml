@@ -38,7 +38,7 @@ spec:
           command:
             - /bin/sh
             - '-c'
-            - 'yarn start:prod | tee -a /logs/dynavaults-backend.log'
+            - 'yarn start:prod-dynavaults | tee -a /logs/dynavaults-backend.log'
           volumeMounts:
             - name: logs
               mountPath: /logs
