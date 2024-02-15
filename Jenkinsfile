@@ -23,7 +23,7 @@ pipeline {
    }
 
    agent {
-      label 'fargate'
+      label 'amazon-linux'
    }
 
    stages {
