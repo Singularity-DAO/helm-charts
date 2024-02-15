@@ -74,3 +74,11 @@ persistent:
   # storageClassName: ""
   
   # selectorLabels: {}
+secret:
+  name: secretname
+  dataFrom:
+    key: kubernetes/sdao-eks-development-cluster/launchpad-service
+  refreshInterval: 5m
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: aws-secretsmanager-clustersecretstore
