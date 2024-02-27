@@ -75,7 +75,7 @@ persistent:
   
   # selectorLabels: {}
 secret:
-  name: secretname
+  name: launchpad-sct
   dataFrom:
     key: kubernetes/sdao-eks-development-cluster/launchpad-service
   refreshInterval: 5m
