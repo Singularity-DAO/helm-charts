@@ -35,10 +35,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - /bin/sh
-            - '-c'
-            - 'node dist/src/main.js | tee -a /logs/launchpad.log'
           volumeMounts:
             - name: logs
               mountPath: /logs
