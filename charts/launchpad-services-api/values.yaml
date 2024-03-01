@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 377995165915.dkr.ecr.eu-west-2.amazonaws.com/launchpad-services-api
+  repository: 925884611165.dkr.ecr.eu-central-1.amazonaws.com/launchpad-services-api
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -75,9 +75,9 @@ persistent:
   
   # selectorLabels: {}
 secret:
-  name: launchpad-sct
+  name: launchpad-service
   dataFrom:
-    key: kubernetes/sdao-eks-development-cluster/launchpad-service
+    key: kubernetes/sdao-eks-production-cluster/launchpad-service
   refreshInterval: 5m
   secretStoreRef:
     kind: ClusterSecretStore
