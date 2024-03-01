@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: launchpad-services-api
+  repository: 377995165915.dkr.ecr.eu-west-2.amazonaws.com/launchpad-services-api
   pullPolicy: IfNotPresent
   tag: "latest"
 
